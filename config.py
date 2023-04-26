@@ -1,3 +1,0 @@
-OPENAI_API_KEY = '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'
-PINECONE_API_KEY = '45f5c74e-a9a9-4e81-8d66-e25a08539e3b'
-PINECONE_API_ENV = 'us-west4-gcp'

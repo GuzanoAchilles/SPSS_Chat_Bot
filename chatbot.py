@@ -5,59 +5,6 @@ from config import OPENAI_API_KEY
 
 template = """
 
-Below is a question on performing analysis with IBM SPSS Statistics Software. 
-    Your goal is to:
-    
-    - Identify the most suitable analysis for the question using SPSS
-    - Ensure the methodological approach is correct and adheres to the standards of surgical research in the united states such as pubmed papers
-    - Verify the assumptions needed for the analysis are met and how to check for them within spss using syntax and click through menus
-    Here are some examples of syntax used to recode datasest from NSQIP:
-
-IF(RACE = "Hispanic, White" | RACE = "Hispanic, Color Unknown" | ETHNICITY_HISPANIC = "Y" | ETHNICITY_HISPANIC = "Yes") Hispanic = 1.
-IF(RACE = "Unknown" | ETHNICITY_HISPANIC = "U" | ETHNICITY_HISPANIC = "Unk" |  ETHNICITY_HISPANIC = "" | ETHNICITY_HISPANIC = "NULL") Hispanic = 2.
-
-RECODE Hispanic (MISSING = 0) (1 = 1) (2 = 2).
-EXECUTE.
-VARIABLE LABELS Hispanic 'Hispanic Ethnicity'.
-VALUE LABELS Hispanic 0 'Not Hispanic' 1 'Hispanic' 2 'Unknown'.
-FORMATS Hispanic (f1.0).
-EXECUTE.
-
-
-IF(Race_UScensusbureau = 1  & Hispanic = 0)  Race_WBANAH= 0.
-IF(Race_UScensusbureau = 2  & Hispanic = 0) Race_WBANAH = 1.
-IF(Race_UScensusbureau = 3  & Hispanic = 0) Race_WBANAH = 2.
-IF(Race_UScensusbureau = 4  & Hispanic = 0) Race_WBANAH = 3.
-IF(Race_UScensusbureau = 5  & Hispanic = 0) Race_WBANAH = 4.
-
-IF(Race_UScensusbureau = 1  & Hispanic = 2)  Race_WBANAH= 0.
-IF(Race_UScensusbureau = 2  & Hispanic = 2)  Race_WBANAH= 1.
-IF(Race_UScensusbureau = 3  & Hispanic = 2)  Race_WBANAH= 2.
-IF(Race_UScensusbureau = 4  & Hispanic = 2)  Race_WBANAH= 3.
-IF(Race_UScensusbureau = 5  & Hispanic = 2)  Race_WBANAH= 4.
-
-IF(Race_UScensusbureau = 1  & Hispanic = 1) Race_WBANAH = 5.
-IF(Race_UScensusbureau = 2  & Hispanic = 1) Race_WBANAH = 5.
-IF(Race_UScensusbureau = 3  & Hispanic = 1) Race_WBANAH = 5.
-IF(Race_UScensusbureau = 4  & Hispanic = 1) Race_WBANAH = 5.
-IF(Race_UScensusbureau = 5  & Hispanic = 1) Race_WBANAH = 5.
-
-IF(Race_UScensusbureau = 6 & Hispanic = 1) Race_WBANAH = 5.
-
-
-RECODE Race_WBANAH (SYSMIS = 6).
-VARIABLE LABELS Race_WBANAH 'Race'.
-VALUE LABELS Race_WBANAH 0 'White' 1 'Black' 2 'Asian' 3 'Native Hawaiian or Other Pacific Islander' 4 'American Indian or Alaska Native' 5 'Hispanic' 6 'Unknown'.
-FORMATS Race_WBANAH (f1.0).
-EXECUTE.
-
-    
-    Below is the Question, if they need syntax or just click through menus, and database choice (NSQIP or Other):
-    Answer_Style: {style}
-    Databases: {database}
-    Question: {question}
-    
-    YOUR RESPONSE:
 
 """
 

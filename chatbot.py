@@ -9,7 +9,7 @@ template = """
 """
 
 prompt = PromptTemplate(
-    input_variables=["style", "database", "question"],
+    input_variables=["option_complexity", "database", "question"],
     template=template,
 )
 
@@ -31,9 +31,9 @@ st.markdown("## Enter Your Analysis Question")
 
 col1, col2 = st.columns(2)
 with col1:
-    option_style = st.selectbox(
-        "Would you like Syntax or Click-through menus?",
-        ('Syntax','Click-Through'))
+    option_complexity = st.selectbox(
+        "Answer Complexity",
+        ('Simple (Foundational)','Advanced (Presents complete Syntax + Advanceced Explanation'))
     
 with col2:
     option_database = st.selectbox(
@@ -51,7 +51,7 @@ question_input = get_text()
 st.markdown("### Your Question")
 
 if question_input:
-    prompt_with_question = prompt.format(style=option_style, database=option_database, question=question_input)
+    prompt_with_question = prompt.format(option_complexity=option_complexity, database=option_database, question=question_input)
 
 
     Formatted_question = llm(prompt_with_question)

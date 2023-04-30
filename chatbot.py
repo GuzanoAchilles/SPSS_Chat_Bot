@@ -9,25 +9,6 @@ OPENAI_API_KEY = st.secrets["OPENAI_API_KEY"]
 PINECONE_API_KEY = st.secrets["PINECONE_API_KEY"]
 PINECONE_API_ENV = st.secrets["PINECONE_API_ENV"]
 
-
-template = """
-
-
-"""
-
-prompt = PromptTemplate(
-    input_variables=["option_complexity", "database", "question"],
-    template=template,
-)
-
-def load_LLM():
-    """Logic for loading the chain you want to use should go here."""
-    llm = OpenAI(temperature=0.7, openai_api_key=OPENAI_API_KEY)
-    return llm
-
-llm = load_LLM()
-
-
 st.set_page_config(page_title="SPSS Chat Bot", page_icon=":robot:", initial_sidebar_state="expanded")
 st.header("SPSS Chat Bot")
 st.subheader("Welcome to the SPSS Chat Bot! This bot will help you find the right SPSS syntax for your analysis. Please select the type of analysis you would like to perform from the sidebar on the left.")
@@ -56,6 +37,23 @@ question_input = get_text()
 
 
 st.markdown("### Your Question")
+
+template = """
+
+
+"""
+
+prompt = PromptTemplate(
+    input_variables=["option_complexity", "database", "question"],
+    template=template,
+)
+
+def load_LLM():
+    """Logic for loading the chain you want to use should go here."""
+    llm = OpenAI(temperature=0.7, openai_api_key=OPENAI_API_KEY)
+    return llm
+
+llm = load_LLM()
 
 if question_input:
     prompt_with_question = prompt.format(option_complexity=option_complexity, database=option_database, question=question_input)

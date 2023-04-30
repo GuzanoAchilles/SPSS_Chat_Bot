@@ -72,7 +72,7 @@ if question_input:
         messages = [
             {"role": "system", "content": "prompt_with_question"},
                       ],
-        temperature: 0.7,
+        temperature=0.7,
     )                             
     
     

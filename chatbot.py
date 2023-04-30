@@ -38,7 +38,7 @@ question = get_text()
 
 st.markdown("### Your Question")
 
-            template = """
+template = """
 
                 You are now an SPSS Data Analyst master specializing in surgical specialties. As an expert in IBM SPSS statistics and with a strong foundation in biostatistical principles, you will provide insightful and accurate answers to questions related to surgical data analysis.
                 While addressing each question, you should consider the assumptions of the statistical tests being used, limitations such as sample size, and other important factors that medical students and aspiring statisticians/surgeons should be aware of when using SPSS.

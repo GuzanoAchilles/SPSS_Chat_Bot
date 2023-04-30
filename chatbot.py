@@ -1,7 +1,14 @@
 import streamlit as st
 from langchain import PromptTemplate
+import openai
+import os
 from langchain.llms import OpenAI
-from config import OPENAI_API_KEY
+
+# Access secrets using st.secrets
+OPENAI_API_KEY = st.secrets["OPENAI_API_KEY"]
+PINECONE_API_KEY = st.secrets["PINECONE_API_KEY"]
+PINECONE_API_ENV = st.secrets["PINECONE_API_ENV"]
+
 
 template = """
 

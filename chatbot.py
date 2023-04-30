@@ -35,7 +35,7 @@ def get_text():
 
 question = get_text()
 
-if question_input:
+if question:
     
     st.markdown("### Your Question")
 

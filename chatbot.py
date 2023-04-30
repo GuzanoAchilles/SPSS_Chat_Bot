@@ -69,9 +69,7 @@ if question_input:
     
     response = openai.ChatCompletion.create(
         model="gpt-3.5-turbo",
-        messages = [
-            {"role": {"system", {"content": "prompt_with_question"},
-            ],
+        messages = [{"role": {"system", {"content": "prompt_with_question"}],
         temperature: 0.7,
     )                             
     
